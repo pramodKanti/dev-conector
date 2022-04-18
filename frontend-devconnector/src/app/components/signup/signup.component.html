@@ -1,0 +1,72 @@
+<section class="container">
+  <h1 class="large text-primary">Sign Up</h1>
+  <p class="lead"><i class="fa fa-user"></i> Create Your Account</p>
+  <form
+    class="form"
+    action="create-profile.html"
+    #signupForm="ngForm"
+    (ngSubmit)="onSubmit(signupForm)"
+  >
+    <div class="form-group">
+      <input
+        type="text"
+        placeholder="Name"
+        name="name"
+        minlength="2"
+        ngModel
+        #name="ngModel"
+        required
+      />
+      <span *ngIf="!name.valid && name.touched">name is required</span>
+    </div>
+    <div class="form-group">
+      <input
+        type="email"
+        placeholder="Email Address"
+        name="email"
+        email
+        #email="ngModel"
+        required
+        ngModel
+      />
+      <span *ngIf="!email.valid && email.touched">Enter a valid email </span>
+
+      <small class="form-text"
+        >This site uses Gravatar so if you want a profile image, use a Gravatar
+        email</small
+      >
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        placeholder="Password"
+        name="password1"
+        ngModel
+        #password1="ngModel"
+        minlength="6"
+        required
+      />
+      <span *ngIf="!password1.valid && password1.touched"
+        >password atleast 6 characters
+      </span>
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        placeholder="Confirm Password"
+        name="password2"
+        minlength="6"
+        ngModel
+        required
+        #password2="ngModel"
+      />
+      <span *ngIf="!password2.valid && password2.touched"
+        >password atleast 6 characters
+      </span>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Register" />
+  </form>
+  <p class="my-1">
+    Already have an account? <a routerLink="/login">Sign In</a>
+  </p>
+</section>
